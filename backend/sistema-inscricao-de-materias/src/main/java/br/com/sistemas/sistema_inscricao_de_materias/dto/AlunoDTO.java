@@ -11,4 +11,5 @@ public record AlunoDTO(
         String nomeCompleto,
         int notaGeral,
         int anoIngressao,
-        List<Materia> materiasInscritas) { }
+        List<String> materiasInscritas
+) { }

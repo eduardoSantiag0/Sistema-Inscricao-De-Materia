@@ -82,7 +82,6 @@ public class Aluno {
             return true;
     }
 
-    //* Getters e Setters
 
     public boolean isPrioridade() {
         return prioridade;

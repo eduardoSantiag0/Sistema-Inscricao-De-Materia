@@ -20,18 +20,18 @@ public class AlunoController {
     @Autowired
     private MateriaService materiaService;
 
-//    JSON parse error: Cannot construct instance of `br.com.sistemas.sistema_inscricao_de_materias.model.Materia` (although at least one Creator exists): no String-argument constructor/factory method to deserialize from String value ('Cinema Novo')]
 
     @PostMapping("/add")
     public String add(@RequestBody AlunoDTO alunoDTO) {
         try {
             System.out.println(alunoDTO);
-            Aluno aluno = convertToAlunoEntity(alunoDTO);
 
             List<Materia> materiasInscritas = alunoDTO.materiasInscritas().stream()
-                    .map(m -> materiaService.findByNomeMateria(m.getNomeMateria()).orElseThrow(() -> new IllegalArgumentException("Matéria não encontrada: " + m)))
+                    .map(nomeMateria -> materiaService.findByNomeMateria(nomeMateria)
+                            .orElseThrow(() -> new IllegalArgumentException("Matéria não encontrada: " + nomeMateria)))
                     .collect(Collectors.toList());
-            aluno.setMateriasInscritas(materiasInscritas);
+
+            Aluno aluno = converterAluno(alunoDTO, materiasInscritas);
 
             alunoService.salvarAluno(aluno);
             return "Novo aluno adicionado";
@@ -41,53 +41,30 @@ public class AlunoController {
     }
 
 
-//    @PostMapping("/add")
-//    public String add(@RequestBody AlunoDTO alunoDTO) {
-//        try {
-//            System.out.println("AlunoDTO recebido: " + alunoDTO);
-//
-//            // Convertendo DTO para entidade Aluno
-//            Aluno aluno = convertToAlunoEntity(alunoDTO);
-//
-//            // Buscando e associando matérias
-//            List<Materia> materiasInscritas = alunoDTO.materiasInscritas().stream()
-//                    .map(m -> {
-//                        Optional<Materia> materia = materiaService.findByNomeMateria(m.getNomeMateria());
-//                        if (materia.isPresent()) {
-//                            return materia.get();
-//                        } else {
-//                            throw new IllegalArgumentException("Matéria não encontrada: " + m);
-//                        }
-//                    })
-//                    .collect(Collectors.toList());
-//            aluno.setMateriasInscritas(materiasInscritas);
-//
-//            // Salvando aluno
-//            alunoService.salvarAluno(aluno);
-//            return "Novo aluno adicionado";
-//        } catch (Exception e) {
-//            return "Erro ao adicionar aluno: " + e.getMessage();
-//        }
-//    }
 
-
-    private Aluno convertToAlunoEntity(AlunoDTO alunoDTO) {
-        return new Aluno(alunoDTO.nomeCompleto(), alunoDTO.notaGeral(), alunoDTO.anoIngressao(), alunoDTO.materiasInscritas());
+    private Aluno converterAluno(AlunoDTO alunoDTO, List <Materia> materias) {
+        return new Aluno(alunoDTO.nomeCompleto(), alunoDTO.notaGeral(), alunoDTO.anoIngressao(), materias);
     }
-
 
    @GetMapping("/find")
     public List<AlunoDTO> findAlunos () {
        List<Aluno> listaAlunos =  alunoService.findAll();
+
+
+       List<String> listaMaterias = listaAlunos.stream()
+               .flatMap(a -> a.getMatriasInscritas().stream())
+               .map(Materia::getNomeMateria)
+               .collect(Collectors.toList());
 
        List<AlunoDTO> listaDTOs = listaAlunos.stream()
                .map(aluno -> new AlunoDTO(
                        aluno.getNomeCompleto(),
                        aluno.getNotaGeral(),
                        aluno.getAnoIngressao().getYear(),
-                       aluno.getMatriasInscritas()
+                       listaMaterias
                ))
                .collect(Collectors.toList());
        return listaDTOs;
    }
+
 }
