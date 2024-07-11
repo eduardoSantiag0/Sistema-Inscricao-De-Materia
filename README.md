@@ -6,7 +6,7 @@
 # Descrição
 O Sistema de Matrícula é uma aplicação full-stack desenvolvida com React no front-end e Java Spring Boot no back-end. O sistema permite que alunos se inscrevam em diversas matérias, onde um aluno pode estar inscrito em várias matérias e uma matéria pode ter vários alunos.
 
-![Print da Apliacação](screenshots\Sistema_de_Matricula.png)
+![Print da Apliacação](screenshots/Sistema_de_Matricula.png)
 
 ### Funcionamento da Inscrição
 - **Preferência na Inscrição**: O sistema implementa um mecanismo de prioridade para inscrição de alunos em matérias quando a capacidade máxima é atingida. 
