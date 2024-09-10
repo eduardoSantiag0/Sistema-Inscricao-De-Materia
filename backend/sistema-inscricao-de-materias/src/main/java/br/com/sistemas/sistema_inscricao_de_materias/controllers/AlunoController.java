@@ -28,9 +28,12 @@ public class AlunoController {
         try {
             System.out.println(alunoDTO);
 
+            //todo Adicionar verificação para caso matéria esteja cheia
+            //* filter para materia.isTemEspaco() == true
             List<Materia> materiasInscritas = alunoDTO.materiasInscritas().stream()
                     .map(nomeMateria -> materiaService.findByNomeMateria(nomeMateria)
                             .orElseThrow(() -> new IllegalArgumentException("Matéria não encontrada: " + nomeMateria)))
+                    .filter(Materia::getTemEspaco)
                     .collect(Collectors.toList());
 
             Aluno aluno = converterAluno(alunoDTO, materiasInscritas);
