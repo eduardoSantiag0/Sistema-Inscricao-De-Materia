@@ -1,0 +1,10 @@
+# Node modules
+frontend/sistema_matricula/node_modules
+backend/sistema-inscricao-de-materias/target
+
+# Logs
+*.log
+
+# Build output
+frontend/sistema_matricula/build
+backend/sistema-inscricao-de-materias/target

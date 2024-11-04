@@ -1,0 +1,25 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/frontend/sistema_matricula/node_modules
+/frontend/sistema_matricula/.pnp
+/frontend/sistema_matricula/.pnp.js
+
+# testing
+/frontend/sistema_matricula/coverage
+
+# production
+/frontend/sistema_matricula/build
+
+# misc
+/frontend/sistema_matricula/.DS_Store
+/frontend/sistema_matricula/.env.local
+/frontend/sistema_matricula/.env.development.local
+/frontend/sistema_matricula/.env.test.local
+/frontend/sistema_matricula/.env.production.local
+
+/frontend/sistema_matricula/npm-debug.log*
+/frontend/sistema_matricula/yarn-debug.log*
+/frontend/sistema_matricula/yarn-error.log*
+
+# /frontend/sistema_matricula/node_modules

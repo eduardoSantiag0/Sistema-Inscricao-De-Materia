@@ -36,7 +36,7 @@ O Sistema de Matrícula é uma aplicação full-stack desenvolvida com React no 
 
 ## Passo a Passo para Uso
 
-1. Acessar a Aplicação: Abra o navegador e acesse http://localhost:3000.
+1. Acessar a Aplicação: Abra o navegador e acesse http://localhost:3000
 
 2. Cadastro de Alunos: Preencha o formulário com os dados do aluno e inscreva-se nas matérias desejadas.
 
