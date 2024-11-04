@@ -36,66 +36,27 @@ O Sistema de Matrícula é uma aplicação full-stack desenvolvida com React no 
 
 ## Passo a Passo para Uso
 
-1. Acessar a Aplicação: Abra o navegador e acesse http://localhost:3000
+1. **Clonar o Repositório**
 
-2. Cadastro de Alunos: Preencha o formulário com os dados do aluno e inscreva-se nas matérias desejadas.
+```bash
+git clone https://github.com/eduardoSantiag0/Sistema-Inscricao-De-Materia; 
 
-3. Visualizar Matérias: Acesse a lista de matérias para ver a disponibilidade de vagas.
+cd Sistema-Inscricao-De-Materias
+```
+
+2. **Iniciar a Aplicação com Docker** 
+  ```bash
+  docker-compose up --build
+  ```
+
+3. **Acessar a Aplicação**: Abra o navegador e acesse http://localhost:3000
+
+
+4. **Cadastro de Alunos**: Preencha o formulário com os dados do aluno e inscreva-se nas matérias.
+
+5. **Visualizar Matérias**: Acesse a lista de matérias para ver a disponibilidade de vagas.
 
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
-
-
-<!-- 
-## Instalação
-
-```bash
-
-``` -->
-
-<!-- ## Environment Variables
-
-## Usage -->
-
-<!-- 
-```bash
-```
-
-
-<h2 id="routes">📍 API Endpoints</h2>
-
-Here you can list the main routes of your API, and what are their expected request bodies.
-​
-| route               | description                                          
-|----------------------|-----------------------------------------------------
-| <kbd>GET /authenticate</kbd>     | retrieves user info see [response details](#get-auth-detail)
-| <kbd>POST /authenticate</kbd>     | authenticate user into the api see [request details](#post-auth-detail) -->
-
-<!-- <h3>GET</h3>
-
-**RESPONSE**
-```json
-{
-  "name": "",
-  "age": ,
-  "email": ""
-}
-```
-
-<h3 >POST</h3>
-
-**REQUEST**
-```json
-{
-  "username": "admin",
-  "password": "4444444"
-}
-```
-
-**RESPONSE**
-```json
-{
-  "resp": "resp"
-}
-``` -->
+ 
